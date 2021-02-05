@@ -122,6 +122,15 @@ function compterArticles()
 function supprimePanier(){
    unset($_SESSION['panier']);
 }
+
+if (isset($_POST['Deconnexion'])){
+
+   if(isset($_SESSION['IDCli'])){
+       echo"<script>alert('Deconnexion reussie')</script>";
+       echo"<scripte>window.location = 'Connexion.php'</script>";
+   }
+}
+
 ?>
 
 
@@ -138,11 +147,9 @@ function supprimePanier(){
     <li class="slide-nav_item border-bottom">
     <a> Acceuil </a>
     </li>
-    <button type="button" value="Connexion" >
-    Se connecter 
-    </a>
-    <button type="button" value="Inscription">
-    S'inscrire
+    <div>
+    <button type="sunmit" name="Deconnexion" class="btn">Deconnexion</button>
+    </div> 
     </div>
     </header>
     <body>

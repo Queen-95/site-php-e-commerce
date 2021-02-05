@@ -5,7 +5,7 @@ require 'recaptchalib.php';
 // Définition des 2 clés
 $cle_publique = "LoremIpsum";
 $cle_privee   = "DolorSitAmet";
- 
+
 // Affichage du bloc reCaptcha dans le formulaire
 echo recaptcha_get_html($cle_publique);
 

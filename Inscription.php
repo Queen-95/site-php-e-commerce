@@ -2,6 +2,9 @@
 
 require_once "BDD.php";
 
+
+
+
 if (!empty($_POST)){
     extract($_POST);
     $valid = true;
@@ -52,13 +55,29 @@ if($valid){
 
     $motdepasse = crypt($motdepasse,"$6$rounds=5000$macleapersonnaliseretagardersecret$");
     $date_creation_compte = date ('Y-m-d H:i:d');
-
-    $db->insert ("INSERT INTO Client(IDCli,pseudo,dateNaiss,villeCLI,Email,motdepasse) 
+    $query = $db->prepare ("INSERT INTO Client(IDCli,pseudo,dateNaiss,villeCLI,Email,motdepasse) 
     VALUES(?, ?, ?, ?, ?");
-    array($IDCli,$Pseudo, $dateNaiss, $villeCli, $Email, $motdepasse);
+    $query->execute(
+    array($IDCli,$Pseudo, $dateNaiss, $villeCli, $Email, $motdepasse));
 
     header("Location: Html.php");
     exit;
+
+    if (isset($_POST['Inscription'])){
+
+        if(isset($_SESSION['IDCli'])){
+            echo"<script>alert('Inscription reussie')</script>";
+            echo"<scripte>window.location = 'Html.php'</script>";
+        }
+    }
+
+    if (isset($_POST['Connexion'])){
+
+        if(isset($_SESSION['IDCli'])){
+            echo"<script>alert('Connexion reussie')</script>";
+            echo"<scripte>window.location = 'Html.php'</script>";
+        }
+    }
 }
 ?>
 
@@ -75,18 +94,10 @@ if($valid){
     <nav class="slide-nav_wrapper">
     <ul id="SlideNav" class="slide-nav">
     <li class="slide-nav_item border-bottom">
-    <a> Acceuil </a>
+    <button type="submit" name="Connexion" class="btn">Connexion</button>
     </li>
     <li class="slide-nav__item meduim-up--hide">
-    <button type="button" value="Achat"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
-</svg>
-    Mon panier
-    </a>
-    <button type="button" value="Connexion" >
-    Se connecter 
-    </a>
-    </div>
+    </li>
     </ul>
     </header>
     <body>
@@ -116,9 +127,9 @@ if($valid){
         <label for="Mdp">Confirmation du mot de passe :</label>
         <input type="password" id="pwd" name="user_ConfirmPassword">
     </div>
-
-    <div class="button">
-        <button type="submit"> S'inscrire</button>
+    <div>
+    <button type="sunmit" name="Inscription" class="btn">s'inscrire</button>
+    </div> 
     </div>
 
 

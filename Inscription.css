@@ -1,8 +1,10 @@
 header{
+    background-color: darksalmon;
     color: dodgerblue;
 }
 
 body {
+    background-color: darkkhaki;
     color: lightskyblue;
 }
 
@@ -41,7 +43,7 @@ textarea {
     height: 5em;
 }
 
-.button {
+.btn {
     padding-left: 90px;
 }
 

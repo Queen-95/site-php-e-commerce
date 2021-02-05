@@ -1,6 +1,6 @@
 <?php
 
-require_once "BDD";
+require_once "BDD.php";
 
 ?>
 

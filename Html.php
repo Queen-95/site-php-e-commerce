@@ -1,9 +1,25 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["pseudo"])) {
+if (!isset($_SESSION["IDCli"])) {
     header("Location: Connexion.php");
     exit();
+}
+
+if (isset($_POST['Deconnexion'])){
+
+    if(isset($_SESSION['IDCli'])){
+        echo"<script>alert('Deconnexion reussie')</script>";
+        echo"<scripte>window.location = 'Connexion.php'</script>";
+    }
+}
+
+if (isset($_POST['Mon panier'])){
+
+    if(isset($_SESSION['IDCli'])){
+        echo"<script>alert('Voici votre panier')</script>";
+        echo"<scripte>window.location = 'Html.php'</script>";
+    }
 }
 
 ?>
@@ -26,15 +42,12 @@ if (!isset($_SESSION["pseudo"])) {
     <button type="button" value="Achat"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
 </svg>
-    <button type="button" value="Mon panier">
-    Mon panier
-    </a>
-    <button type="button" value="Inscription">
-    S'inscrire
-    </a>
-    <button type="button" value="Connexion" >
-    Se connecter 
-    </a>
+<div>
+    <button type="sunmit" name="Mon panier" class="btn">Mon panier</button>
+    </div> 
+    <div>
+    <button type="sunmit" name="Deconnexion" class="btn">Deconnexion</button>
+    </div> 
     </div>
     </header>
 
@@ -42,14 +55,15 @@ if (!isset($_SESSION["pseudo"])) {
 
 <div>
 <img src="php-site-ecommerce/Photo Shop e-commerce/SweatF1.jpg" alt="Sweat Femme 1"/><img src="php-site-ecommerce/Photo Shop e-commerce/tshirtF2.jpg" alt="T-shirt Femme 2"/>
-
+<p>14,99€</p><p>9,99€</p>
 <img src="php-site-ecommerce/Photo Shop e-commerce/sweatF2.jpg" alt="Sweat Femme 2"/><img src="php-site-ecommerce/Photo Shop e-commerce/tshirtF2.jpg" alt="T-shirt Femme 1"/>
-
+<p>14,99€</p><p>9,99€</p>
 <img src="php-site-ecommerce/Photo Shop e-commerce/Sweat1.jpg" alt ="Sweat Homme 1"/><img src="php-site-ecommerce/Photo Shop e-commerce/TshirtH1.jpeg" alt="T-shirt Homme 1"/>
-
+<p>14,99€</p><p>9,99€</p>
 <img src="php-site-ecommerce/Photo Shop e-commerce/Sweat2.jpg" alt ="Sweat Homme 2"/><img src="php-site-ecommerce/Photo Shop e-commerce/tshirt4.jpg" alt="T-shirt Homme 2"/>
+<p>14,99€</p><p>9,99€</p>
 
-</div>s
+</div>
 
 
 </body>
