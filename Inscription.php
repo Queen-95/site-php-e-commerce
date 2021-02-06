@@ -53,7 +53,7 @@ if(empty($motdepasse)){
 
 if($valid){
 
-    $motdepasse = crypt($motdepasse,"$6$rounds=5000$macleapersonnaliseretagardersecret$");
+    $motdepasse = crypt($motdepasse,"secret");
     $date_creation_compte = date ('Y-m-d H:i:d');
     $query = $db->prepare ("INSERT INTO Client(IDCli,pseudo,dateNaiss,villeCLI,Email,motdepasse) 
     VALUES(?, ?, ?, ?, ?");
@@ -67,7 +67,7 @@ if($valid){
 
         if(isset($_SESSION['IDCli'])){
             echo"<script>alert('Inscription reussie')</script>";
-            echo"<scripte>window.location = 'Html.php'</script>";
+            echo"<script>windows.location = 'Html.php'</script>";
         }
     }
 
@@ -75,7 +75,7 @@ if($valid){
 
         if(isset($_SESSION['IDCli'])){
             echo"<script>alert('Connexion reussie')</script>";
-            echo"<scripte>window.location = 'Html.php'</script>";
+            echo"<script>windows.location = 'Html.php'</script>";
         }
     }
 }
@@ -88,21 +88,22 @@ if($valid){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="StyleInscription.css"/>
+    <link rel="stylesheet" href="Inscription.css"/>
     <title>Clothes Shop</title>
    <header><div id= "ClothesShop-section-header" class= "ClothesShop-section">
     <nav class="slide-nav_wrapper">
     <ul id="SlideNav" class="slide-nav">
     <li class="slide-nav_item border-bottom">
+    <form action="Connexion.php" method="post">
     <button type="submit" name="Connexion" class="btn">Connexion</button>
+    </form>
     </li>
     <li class="slide-nav__item meduim-up--hide">
     </li>
     </ul>
     </header>
     <body>
-
-    <form action="/ma-page-de-inscription" method="post">
+    <form action="Html.php" method="post">
     <div>
         <label for="name">Pseudo :</label>
         <input type="text" id="name" name="user_pseudo">
@@ -128,10 +129,10 @@ if($valid){
         <input type="password" id="pwd" name="user_ConfirmPassword">
     </div>
     <div>
-    <button type="sunmit" name="Inscription" class="btn">s'inscrire</button>
+    <button type="submit" name="Inscription" class="btn">s'inscrire</button>
     </div> 
     </div>
-
+    </form>
 
     </body>
 

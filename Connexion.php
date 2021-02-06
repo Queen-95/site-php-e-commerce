@@ -39,8 +39,8 @@ if (!isset($data["IDCli"])){
     $valid = false;
     $err_Email = "L'Email ou le mot de passe est incorrecte";
 }elseif($data["n_motdepasse"] == 1)
-    $query = $db->prepare("UPDATE Client SET n_motdepasse = 0 WHERE IDCli = ?",
-    $query->execute(
+$db->prepare("UPDATE Client SET n_motdepasse = 0 WHERE IDCli = ?",
+$db->execute(
     array($data["IDCli"])));
 
 $data = $req->fetch();
@@ -54,7 +54,7 @@ if (isset($_POST['Connexion'])){
 
     if(isset($_SESSION['IDCli'])){
         echo"<script>alert('Connexion reussie')</script>";
-        echo"<scripte>window.location = 'Html.php'</script>";
+        echo"<script>window.location = 'Html.php'</script>";
     }
 }
 
@@ -66,7 +66,7 @@ if (isset($_POST['Connexion'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="StyleConnexion.css"/>
+    <link rel="stylesheet" href="Connexion.css"/>
     <header><div id= "ClothesShop-section-header" class= "ClothesShop-section">
     <nav class="slide-nav_wrapper">
     <ul id="SlideNav" class="slide-nav">
@@ -74,16 +74,17 @@ if (isset($_POST['Connexion'])){
     <a> Acceuil </a>
     </li>
     <li class="slide-nav__item meduim-up--hide">
-    <button type="button" value="Achat"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
 </svg>
-    <div type="sunmit" name="s'inscrire" class="btn">s'inscrire</button>
+    <div> 
+    <form action="Inscription.php" method="post">
+    <button type="submit" name="s'inscrire" class="btn">s'inscrire</button>
+    </form>
     </div>
     </ul>
     </header>
     <body>
 
-    <form action="/ma-page-de-connexion" method="post">
+    <form action="Html.php" method="post">
     <div>
         <label for="name">Pseudo :</label>
         <input type="text" id="name" name="user_pseudo">
@@ -100,7 +101,7 @@ if (isset($_POST['Connexion'])){
     <div> 
      <button type="submit" name="Connexion" class="btn">Connexion</button>
     </div> 
-    
+    </form>
 
     </body>
 
